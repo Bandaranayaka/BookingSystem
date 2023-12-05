@@ -10,14 +10,14 @@ export const createHotel = async (req, res, next)=> {
         next(err);
     }  
 }
-export const updatedHotel = async (req, res, next)=> {
+export const updateHotel = async (req, res, next)=> {
     try{
-        const updatedHotel = await Hotel.findByIdAndUpdate(
+        const updateHotel = await Hotel.findByIdAndUpdate(
              req.params.id,
              {$set: req.body},
              {new : true }
             );
-        res.status(200).json(updatedHotel)
+        res.status(200).json(updateHotel)
     }catch(err){
         next(err);
     }  
