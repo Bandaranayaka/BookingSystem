@@ -19,7 +19,8 @@ router.post("/", async (req,res)=>{
 //UPDATE--------------------------------------
 router.put("/:id", async (req,res)=>{
     try{
-        const updatedHotel = await Hotel.findByIdAndUpdate(req.params.id,
+        const updatedHotel = await Hotel.findByIdAndUpdate(
+             req.params.id,
              { $set: req.body},
              {new : true }
             );
@@ -44,9 +45,29 @@ router.delete("/:id", async (req,res)=>{
 });
 
 //GET-----------------------------------------
+router.get("/:id", async (req,res)=>{
+    try{
+        const hotel = await Hotel.findById(
+             req.params.id
+            );
+        res.status(200).json(hotel)
+    }catch(err){
+        res.status(500).json(err)
+    }    
+});
 
 //GET ALL-------------------------------------
+router.get("/", async (req,res, next)=>{
 
+    const failed = true
+
+    try{
+        const hotels = await Hotel.findById("skksjkdj");
+        res.status(200).json(hotels)
+    }catch(err){
+        next(err)
+    }    
+});
 
 
 export default router;
