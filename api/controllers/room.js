@@ -3,7 +3,7 @@ import Hotel from "../models/Hotel.js";
 import { createError } from "../utils/error.js";
 
 export const createRoom = async (req,res,next)=>{
-   const hotel = req.params.hotelid;
+   const hotelId = req.params.hotelid;
    const newRoom = new Room(req.body);
 
    try{
@@ -32,7 +32,7 @@ export const updateRoom = async (req, res, next)=> {
     }catch(err){
         next(err);
     }  
-}
+};
 export const deleteRoom = async (req, res, next)=> {
     try{
         await Room.findByIdAndDelete(req.params.id);           
@@ -48,7 +48,7 @@ export const getRoom = async (req, res, next)=> {
     }catch(err){
         next(err);
     }  
-}  
+};
 export const getRooms = async (req, res, next)=> {
     try{
         const rooms = await Room.find();
@@ -56,4 +56,4 @@ export const getRooms = async (req, res, next)=> {
     }catch(err){
         next(err);
     }  
-}
+};
